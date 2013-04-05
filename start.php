@@ -12,17 +12,12 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+    
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
-    <script>
-      function loadImage()
-      {
-        $('#slimg').height($('.container').height());
-        $('#slimg').width($('.container').width());
-      }
-    </script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">    
   </head>
 
   <body>
@@ -78,56 +73,56 @@
 
     <!-- Carousel dialog
     ================================================== -->
-    <div id="myCarousel" class="carousel slide">
-      <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="img/bootstrap-mdo-sfmoma-01.jpg" onload="loadImage()" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="img/bootstrap-mdo-sfmoma-02.jpg" onload="loadImage()" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="img/bootstrap-mdo-sfmoma-03.jpg" onload="loadImage()" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->
 
     <!-- Carousel PHP -->
 
     <?php
+
       include 'connect.php';
 
-      //1. get the most current article from database
-      //2. 
+      //1. Get the most current articles from database
+      $result = mysqli_query($connectCpanel, 
+        "SELECT image, title, description, url FROM articles ORDER BY time DESC LIMIT 3");
+
+      $html_str = ' <div id="myCarousel" class="carousel slide"><ol class="carousel-indicators">';
+      $html_str .= '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
+      $html_str .= '<li data-target="#myCarousel" data-slide-to="1"></li><li data-target="#myCarousel"'; 
+      $html_str .= 'data-slide-to="2"></li></ol><div class="carousel-inner">';
+
+      //2. Load them onto the page
+      if($result)
+      {
+        $first = 0;
+        $item = "item";
+
+        while($row = mysqli_fetch_array($result))
+        {
+
+          if(! $first) 
+            $html_str .= "<div class='item active'><img src=\"img/". $row['image'] ."\"> onload='loadImage()'>";
+          else 
+            $html_str .= "<div class='item'><img src=\"img/". $row['image'] ."\"> onload='loadImage()'>";
+          
+          $html_str .= "<div class='container'><div class='carousel-caption'><h1>" .$row['title']. "</h1>";
+          $html_str .= "<p class='lead'>".substr($row['description'], 0, 50)."</p></div></div></div>";
+          
+          $first = 1;
+        }
+      
+        $html_str .= '</div><a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>';
+        $html_str .= '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a></div>';
+
+        echo $html_str;
+      }
+     
+      
+      
     ?>
 
+    <!-- 3. OnClick the image, popup the dialog -->
+    <div id="dialog" title="Basic dialog" style="display: none;">  
+      <p></p>
+    </div>
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
@@ -155,7 +150,7 @@
         {
           while($row = mysqli_fetch_array($result))
           {
-            $html_str = "<div class='span4'> <img class='img-circle' data-src=\"img/". $row['image']. "\"><h2>". $row['name'];
+            $html_str .= "<div class='span4'> <img class='img-circle' data-src=\"img/". $row['image']. "\"><h2>". $row['name'];
             $html_str .= "</h2><p>". substr($row['description'], 0, 50)."...</p>";
             $html_str .= "<p><a class='btn' href='product.php'>View Details &raquo;</a></p></div>";
           }
@@ -195,6 +190,8 @@
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
 
+
+
     <script>
       !function ($) {
         $(function(){
@@ -204,6 +201,12 @@
       }(window.jQuery)
     </script>
     <script src="js/holder.js"></script>
-    
+    <script>
+      function loadImage()
+      {
+        $('#slimg').height($('.container').height());
+        $('#slimg').width($('.container').width());
+      }
+    </script>
   </body>
 </html>
