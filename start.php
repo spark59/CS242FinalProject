@@ -13,9 +13,16 @@
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
+    <script>
+      function loadImage()
+      {
+        $('#slimg').height($('.container').height());
+        $('#slimg').width($('.container').width());
+      }
+    </script>
   </head>
 
   <body>
@@ -65,42 +72,45 @@
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
 
-      </div> <!-- /.container -->
-    </div><!-- /.navbar-wrapper -->
+    
 
 
 
-    <!-- Carousel php 
+    <!-- Carousel dialog
     ================================================== -->
     <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img src="../assets/img/examples/slide-01.jpg" alt="">
+          <img src="img/bootstrap-mdo-sfmoma-01.jpg" onload="loadImage()" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Example headline.</h1>
               <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Sign up today</a>
+              
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="../assets/img/examples/slide-02.jpg" alt="">
+          <img src="img/bootstrap-mdo-sfmoma-02.jpg" onload="loadImage()" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Another example headline.</h1>
               <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Learn more</a>
+              
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="../assets/img/examples/slide-03.jpg" alt="">
+          <img src="img/bootstrap-mdo-sfmoma-03.jpg" onload="loadImage()" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>One more for good measure.</h1>
               <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
             </div>
           </div>
         </div>
@@ -109,6 +119,14 @@
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div><!-- /.carousel -->
 
+    <!-- Carousel PHP -->
+
+    <?php
+      include 'connect.php';
+
+      //1. get the most current article from database
+      //2. 
+    ?>
 
 
     <!-- Marketing messaging and featurettes
@@ -123,7 +141,6 @@
 
 
       <?php
-        include 'connect.php';
 
         //1. select id, image, name, desc from table if table exists
 
@@ -157,7 +174,8 @@
 
     </div><!-- /.container -->
 
-
+      </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
 
     <!-- Le javascript
     ================================================== -->
@@ -186,5 +204,6 @@
       }(window.jQuery)
     </script>
     <script src="js/holder.js"></script>
+    
   </body>
 </html>
