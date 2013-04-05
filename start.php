@@ -12,15 +12,300 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="css/cupertino/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+    
+    <style>
+
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
+
+
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+
+
+    /* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 60px;
+    }
+
+    .carousel .container {
+      position: relative;
+      z-index: 9;
+    }
+
+    .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      background-color: transparent;
+      border: 0;
+      z-index: 10;
+    }
+
+    .carousel .item {
+      height: 500px;
+    }
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 500px;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 550px;
+      padding: 0 20px;
+      margin-top: 200px;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    }
+    .carousel-caption .btn {
+      margin-top: 10px;
+    }
+
+
+
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 300px;
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+    
+    /* Styling for Dialog UI
+    -------------------------------------------------- */
+    .demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+    
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">    
   </head>
 
   <body>
+    
 
 
 
@@ -38,7 +323,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">Project name</a>
+            <a class="brand" href="#">Single Friends Recipes</a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
               <ul class="nav">
@@ -47,19 +332,19 @@
                 <li><a href="#contact">Contact</a></li>
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ingredient/Recipes <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#" id = "listing" >List Ingredients</a></li>
+                    <li><a href="#" id = "listrec" >List Recipes</a></li>
+                    <li><a href="#" id = "posting" >Post Ingredient</a></li>
                     <li class="divider"></li>
                     <li class="nav-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
+                    <li><a href="#">Not used yet</a></li>
+                    <li><a href="#">Not used yet</a></li>
                   </ul>
                 </li>
                 <?php
-                    echo "<li><a href='#'>Welcome, '$_SESSION[username]'!</a></li>";
+                    echo "<li><a >Welcome, $_SESSION[username]!</a></li>";
                 ?>
                 <li><a href="logout.php">Logout</a></li>
               </ul>
@@ -67,62 +352,51 @@
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
 
-    
+      </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
 
 
 
-    <!-- Carousel dialog
+    <!-- Carousel
     ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../assets/img/examples/slide-01.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Example headline.</h1>
+              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <a class="btn btn-large btn-primary" href="#">Sign up today</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../assets/img/examples/slide-02.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Another example headline.</h1>
+              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <a class="btn btn-large btn-primary" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../assets/img/examples/slide-03.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>One more for good measure.</h1>
+              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
 
-    <!-- Carousel PHP -->
 
-    <?php
-
-      include 'connect.php';
-
-      //1. Get the most current articles from database
-      $result = mysqli_query($connectCpanel, 
-        "SELECT image, title, description, url FROM articles ORDER BY time DESC LIMIT 3");
-
-      $html_str = ' <div id="myCarousel" class="carousel slide"><ol class="carousel-indicators">';
-      $html_str .= '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
-      $html_str .= '<li data-target="#myCarousel" data-slide-to="1"></li><li data-target="#myCarousel"'; 
-      $html_str .= 'data-slide-to="2"></li></ol><div class="carousel-inner">';
-
-      //2. Load them onto the page
-      if($result)
-      {
-        $first = 0;
-        $item = "item";
-
-        while($row = mysqli_fetch_array($result))
-        {
-
-          if(! $first) 
-            $html_str .= "<div class='item active'><img src=\"img/". $row['image'] ."\"> onload='loadImage()'>";
-          else 
-            $html_str .= "<div class='item'><img src=\"img/". $row['image'] ."\"> onload='loadImage()'>";
-          
-          $html_str .= "<div class='container'><div class='carousel-caption'><h1>" .$row['title']. "</h1>";
-          $html_str .= "<p class='lead'>".substr($row['description'], 0, 50)."</p></div></div></div>";
-          
-          $first = 1;
-        }
-      
-        $html_str .= '</div><a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>';
-        $html_str .= '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a></div>';
-
-        echo $html_str;
-      }
-     
-      
-      
-    ?>
-
-    <!-- 3. OnClick the image, popup the dialog -->
-    <div id="dialog" title="Basic dialog" style="display: none;">  
-      <p></p>
-    </div>
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
@@ -132,34 +406,46 @@
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-      <!-- search Ingredients table -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>Heading</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
 
-
-      <?php
-
-        //1. select id, image, name, desc from table if table exists
-
-        $result = mysqli_query($connectCpanel, 
-                "SELECT i_id, image, name, description FROM ingredients ORDER BY time DESC LIMIT 3");
+        <!-- Dialogues -->
+        <!-- ui-dialog -->
+        <!-- This dialog contains an ajax form!-->
+        <div id="postIngredientDialog" title="Register">
+            <p>Enter ingredient information: </p>
+            <form id="imageform" method="post" enctype="multipart/form-data" action='uploadImg.php'>
+                <textarea name = 'name' id = 'name' cols ='20' rows= '1' placeholder='Ingredient Name'></textarea><br>
+                <textarea name = 'descr' id = 'descr' cols ='40' rows= '4' placeholder='Description'></textarea><br>
+                <textarea name = 'nutInfo' id = 'nutInfo' cols ='40' rows= '4' placeholder='Description'></textarea><br><br>
+                Upload image: <input type="file" name="photoimg" id="photoimg" /><br><br>
+                <input type="submit" value="Submit Ingredient" /> 
+            </form>
+            
+        </div>
         
-        //display every row
-
-        $html_str = "";
-
-        if($result)
-        {
-          while($row = mysqli_fetch_array($result))
-          {
-            $html_str .= "<div class='span4'> <img class='img-circle' data-src=\"img/". $row['image']. "\"><h2>". $row['name'];
-            $html_str .= "</h2><p>". substr($row['description'], 0, 50)."...</p>";
-            $html_str .= "<p><a class='btn' href='product.php'>View Details &raquo;</a></p></div>";
-          }
-          echo $html_str;
-        }
-      ?>
-
-       </div><!-- /.row -->
-
+        <!--Data Containers For Dialogues-->
+        
+        
+        <div id="register">BLAM</div>
+        <div><font size="2">Not registered? <a href="#" id="reg_link">Sign-Up!</a></div>
 
       <!-- FOOTER -->
       <footer>
@@ -169,8 +455,7 @@
 
     </div><!-- /.container -->
 
-      </div> <!-- /.container -->
-    </div><!-- /.navbar-wrapper -->
+
 
     <!-- Le javascript
     ================================================== -->
@@ -189,24 +474,73 @@
     <script src="js/bootstrap-collapse.js"></script>
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
-
-
+    <script src="js/jquery-ui-1.10.2.custom.js"></script>
+    <script src="js/jquery.form.js"></script>
 
     <script>
       !function ($) {
         $(function(){
           // carousel demo
-          $('#myCarousel').carousel()
+            $('#myCarousel').carousel()
+          
+            // UI Dialog configuration
+            $( "#postIngredientDialog" ).dialog({
+            autoOpen: false,
+            width: 500,
+            buttons: [
+               {
+                    text: "Cancel",
+                    click: function() {
+                        $(this).dialog('close');
+                        event.preventDefault();
+                    }    
+               }
+           ]
+        });  
+          
+          
+        // Link to open the dialog
+		$( "#posting" ).click(function( event ) {
+			$( "#postIngredientDialog" ).dialog( "open" );
+			event.preventDefault();
+		});  
+        
+            
+        // the php dialog
+        var dlg=$('#register').dialog({
+            title: 'Ingredient Information',
+            resizable: true,
+            autoOpen:false,
+            modal: true,
+            hide: 'fade',
+            width:800,
+            height:600
+        });
+
+
+         $('#reg_link').click(function(e) {
+             e.preventDefault();
+             dlg.load('showIngredient.php', { input: 5 }, function(){
+                 dlg.dialog('open');
+             });
+          });           
+          
+         //stuff... 
+        
+        $("#imageform").ajaxForm(function() { 
+            alert("Image upload complete.");
+            // Erase previously inserted values
+            document.getElementById('name').value='';
+            document.getElementById('descr').value='';
+            document.getElementById('nutInfo').value='';
+            document.getElementById('photoimg').value='';
+            $( "#postIngredientDialog" ).dialog( "close" );
+        }); 
+
+              
         })
       }(window.jQuery)
     </script>
     <script src="js/holder.js"></script>
-    <script>
-      function loadImage()
-      {
-        $('#slimg').height($('.container').height());
-        $('#slimg').width($('.container').width());
-      }
-    </script>
   </body>
 </html>
