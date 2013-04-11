@@ -359,42 +359,48 @@
 
     <!-- Carousel
     ================================================== -->
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="../assets/img/examples/slide-01.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Sign up today</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="../assets/img/examples/slide-02.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Learn more</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="../assets/img/examples/slide-03.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->
+    <?php
+
+      include 'connect.php';
+
+      //1. Get the most current articles from database
+      $result = mysqli_query($connectCpanel, 
+        "SELECT image, title, description, url FROM articles ORDER BY timer DESC LIMIT 3");
+
+      $html_str = ' <div id="myCarousel" class="carousel slide"><ol class="carousel-indicators">';
+      $html_str .= '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
+      $html_str .= '<li data-target="#myCarousel" data-slide-to="1"></li><li data-target="#myCarousel"'; 
+      $html_str .= 'data-slide-to="2"></li></ol><div class="carousel-inner">';
+
+      //2. Load them onto the page
+      if($result)
+      {
+        $first = 0;
+        $item = "item";
+
+        while($rew = mysqli_fetch_array($result))
+        {
+
+          if(! $first) 
+            $html_str .= "<div class='item active'><img src=\"img/". $rew['image'] ."\" id= 'slimg'>";
+          else 
+            $html_str .= "<div class='item'><img src=\"img/". $rew['image'] ."\"  id='slimg'>";
+          
+          $html_str .= "<div class='container'><div class='carousel-caption'><h1>" .$rew['title']. "</h1>";
+          $html_str .= "<p class='lead'>".substr($rew['description'], 0, 200)." ...</p><a href='".$rew['url']."' role='button' class='btn' data-toggle='modal'>Details</a></div></div></div>";
+          
+          $first = 1;
+        }
+      
+        $html_str .= '</div><a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>';
+        $html_str .= '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a></div>';
+
+        echo $html_str;
+      }
+     
+      
+      
+    ?>
 
 
 
